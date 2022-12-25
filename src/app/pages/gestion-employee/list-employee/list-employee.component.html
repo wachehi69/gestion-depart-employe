@@ -1,0 +1,20 @@
+<table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nom employe</th>
+        <th scope="col">Prénom employe</th>
+        <th scope="col">Numero de téléphone</th>
+        <th scope="col"> Département employe</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let emp of employees">
+            <td>{{emp.id}}</td>
+            <td>{{emp.employeeLastName}}</td>
+            <td>{{emp.employeeFirstName}}</td>
+            <td>{{emp.employeePhone}}</td>    
+            <td>{{emp.department.departmentName}}</td>         
+          </tr>      
+    </tbody>
+  </table>

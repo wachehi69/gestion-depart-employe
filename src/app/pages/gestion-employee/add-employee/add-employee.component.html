@@ -1,0 +1,23 @@
+<form >
+    <div class="form-group">
+        <label for="Nom">Nom de l'employee</label>
+        <input type="text"  class="form-control" >
+    </div>
+    <div class="form-group">
+        <label for="Prenom">Prénom employee</label>
+        <input type="text"  class="form-control"  >
+    </div>
+        <label for="phone">Numero téléphone</label>
+        <input type="text"  class="form-control" >
+
+    <div class="form-group">    
+        <label for="department">Departement</label>
+       <select class="form-control" name="department" id="department">
+        <option *ngFor="let dep of listDepart" value="{{dep.id}}">{{dep.departmentName}}</option>
+       </select>
+    </div>
+
+    <div class="form-group">
+       <button type="submit" class="btn btn-outline-primary  btn-sm mt-2">Ajouter</button> 
+    </div>
+</form>
