@@ -6,6 +6,7 @@ import { GestionEmployeeComponent } from './gestion-employee.component';
 import { ListEmployeeComponent } from './list-employee/list-employee.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     GestionEmployeeRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule     // Module pour la pagination
   ]
 })
 export class GestionEmployeeModule { }

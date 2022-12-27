@@ -26,4 +26,9 @@ export class EmployeeService {
   getEmployeesByDepartment(departementId: number) : Observable<any[]>{
     return this.httpClient.get<any[]>(`${this.apiUrl}/api/employees/${departementId}`);
   }
+
+  getEmployeesByPagination(params: any): Observable<any> {
+    return this.httpClient.get<any>(`${this.apiUrl}/api/employees/paging`, {params});
+  }
+
 }

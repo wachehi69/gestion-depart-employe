@@ -17,9 +17,28 @@
             <td>{{emp.employeePhone}}</td>    
             <td>{{emp.department.departmentName}}</td>         
           
-            <td> <button class="btn btn-outline-info btn-sm">Modifier</button></td>
+            <td> <button class="btn btn-outline-info btn-sm fa fa-edit">Modifier</button></td>
             <td><button class="btn btn-outline-danger btn-sm fa fa-remove">Supprimer</button></td>
         
         </tr>  
     </tbody>
   </table>
+  <pagination-controls
+   previousLabel="Precedent"
+   nextLabel="Suivant"
+   [responsive]="true"
+   (pageChange)="handlePageChange($event)"
+  >
+  </pagination-controls>
+  <ul>
+     <li 
+      class="list-group-item"
+     *ngFor="let e of employees | paginate : {
+        itemsPerPage:PAGESIZE,
+        currentPage:PAGE,
+        totalItems:count
+     }; let i = index "     
+     [class.active]= "i === CURRENTINDEX"
+     >
+    </li>
+  </ul>
