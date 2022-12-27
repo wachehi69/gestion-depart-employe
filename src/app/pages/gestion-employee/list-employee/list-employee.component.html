@@ -2,10 +2,11 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Nom employe</th>
-        <th scope="col">Prénom employe</th>
-        <th scope="col">Numero de téléphone</th>
-        <th scope="col"> Département employe</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Prénom</th>
+        <th scope="col">Numero</th>
+        <th scope="col">Département</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -15,6 +16,10 @@
             <td>{{emp.employeeFirstName}}</td>
             <td>{{emp.employeePhone}}</td>    
             <td>{{emp.department.departmentName}}</td>         
-          </tr>      
+          
+            <td> <button class="btn btn-outline-info btn-sm">Modifier</button></td>
+            <td><button class="btn btn-outline-danger btn-sm fa fa-remove">Supprimer</button></td>
+        
+        </tr>  
     </tbody>
   </table>

@@ -1,20 +1,45 @@
-<form >
+<form [formGroup]="employeeForm"  (ngSubmit)="ajoutEmployee()">
     <div class="form-group">
         <label for="Nom">Nom de l'employee</label>
-        <input type="text"  class="form-control" >
+        <input [ngClass]="{'is-invalid': submitted && f['employeeLastName'].errors}"          
+         formControlName="employeeLastName"  type="text"  class="form-control">
+        <div *ngIf="f['employeeLastName'].errors" class="invalid-feedback">
+           <div *ngIf="f['employeeLastName'].errors?.['required']">
+               <i>Le nom de l'employé est obligatoire</i>
+           </div>
+        </div>
     </div>
     <div class="form-group">
         <label for="Prenom">Prénom employee</label>
-        <input type="text"  class="form-control"  >
+        <input [ngClass]="{'is-invalid': submitted && f['employeeFirstName'].errors}"        
+        formControlName="employeeFirstName" type="text"  class="form-control"  >
+        <div *ngIf="f['employeeFirstName'].errors" class="invalid-feedback">
+            <div *ngIf="f['employeeFirstName'].errors?.['required']">
+                <i>Le prénom de l'employé est obligatoire</i>
+            </div>
+         </div>
     </div>
         <label for="phone">Numero téléphone</label>
-        <input type="text"  class="form-control" >
+        <input [ngClass]="{'is-invalid': submitted && f['employeePhone'].errors}" 
+        formControlName="employeePhone" type="text"  class="form-control">
+        <div *ngIf="f['employeePhone'].errors" class="invalid-feedback">
+            <div *ngIf="f['employeePhone'].errors?.['required']">
+                <i>Le téléphone de l'employé est obligatoire</i>
+            </div>
+         </div>
 
     <div class="form-group">    
         <label for="department">Departement</label>
-       <select class="form-control" name="department" id="department">
+       <select [ngClass]="{'is-invalid': submitted && f['departmentId'].errors}"
+              formControlName="departmentId" class="form-control" name="department" id="department">              
         <option *ngFor="let dep of listDepart" value="{{dep.id}}">{{dep.departmentName}}</option>
        </select>
+       <div *ngIf="f['departmentId'].errors" class="invalid-feedback">
+        <div *ngIf="f['departmentId'].errors?.['required']">
+            <i>Le departement de l'employé est obligatoire</i>
+        </div>
+     </div>
+
     </div>
 
     <div class="form-group">

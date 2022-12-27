@@ -11,6 +11,7 @@ import { EmployeeService } from 'src/app/services/employee.service';
 export class AddEmployeeComponent implements OnInit{
 
   employeeForm: FormGroup;   // déclaration du formulaire
+  submitted: boolean= false // variable qui indique true si le formulaire est envoyé
   listDepart: any [] = [];
 
   constructor( 
@@ -21,12 +22,12 @@ export class AddEmployeeComponent implements OnInit{
    ngOnInit() {
 
     this.getListDepartment();
-      this.employeeForm = this.fb.group({
-      employeName : ['', Validators.required]  
-
-      })
-
- 
+      this.employeeForm = this.fb.group({    // initialisation des champs formulaire
+      employeeFirstName: ['', Validators.required], 
+      employeeLastName:  ['', Validators.required],
+      employeePhone: ['', Validators.required],
+      departmentId: ['', Validators.required]
+      }) 
   }
 
   getListDepartment() : void {
@@ -36,7 +37,24 @@ export class AddEmployeeComponent implements OnInit{
   }
 
   ajoutEmployee() : void {
-   // this.employeServ.creatEmployee().subscribe(data =>)
+   //verifions le formulaire envoyé si valide ou pas
+     this.submitted = true;   // indique que le formulaire a été soumis par l'utilisateur
+    if(this.employeeForm.invalid) { 
+    return;
+    }else {
+     console.log(this.employeeForm.value); 
+      this.employeServ.creatEmployee(this.employeeForm.value).subscribe(data => {
+        console.log(data)    
+        this.employeeForm.reset();
+        this.submitted = false;
+      }, err => console.log(err))
+
+    }
+   
+  }
+  // la methode qui permet de renoyer le fomulaire avec tous les champs
+  get f(){
+    return this.employeeForm.controls;
   }
 
 }
