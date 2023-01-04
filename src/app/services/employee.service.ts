@@ -31,4 +31,16 @@ export class EmployeeService {
     return this.httpClient.get<any>(`${this.apiUrl}/api/employees/paging`, {params});
   }
 
+  delEmployee(id : number) : Observable<any>{
+    return this.httpClient.delete<any>(`${this.apiUrl}/api/employees/delete/${id}`);
+  }
+
+  updateEmployee( employee: any, id: number): Observable<any> {
+    return this.httpClient.put<any>(`${this.apiUrl}/api/employees/update/${id}`, employee);
+  }
+  getEmployeMotcleByPaging(params: any) : Observable<any> {
+    return this.httpClient.get<any>(`${this.apiUrl}/api/employees/pageable`, {params});
+  }
+  
+
 }

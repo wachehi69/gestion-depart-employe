@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
@@ -13,6 +13,9 @@ export class ListEmployeeComponent implements OnInit {
   public employees: any[] = [];
   public listemployees: any[] = [];
   public count = 0;
+
+  @Output() employeeEmitted: EventEmitter<any> = new EventEmitter();
+
   constructor(private employeeServ: EmployeeService){}
 
   ngOnInit(): void {
@@ -58,5 +61,24 @@ export class ListEmployeeComponent implements OnInit {
     this.getEmployeesPaging();
   }
 
+  handleSizePageChange(event: any) {
+    this.PAGESIZE = event.target.value;
+    this.PAGE = 1;
+    this.getEmployeesPaging();
+  }
+  
+  deleteEmployee(id: number): void {
+
+  if(confirm('Are you sure you want to delete this employe?'))
+   this.employeeServ.delEmployee(id).subscribe(response => {
+    this.getEmployeesPaging();
+   }, err => console.log(err));
+
+  }
+
+  onUpdate = (employee: any) => {
+     this.employeeEmitted.emit(employee)   // envoie des données vers le composant parent cad gestion-employee
+   
+  }
 
 }

@@ -14,7 +14,11 @@ const routes: Routes = [
       },
       {
         path: 'employees', loadChildren: () => import ("./gestion-employee/gestion-employee.module").then((m) => m.GestionEmployeeModule)
-      }
+      },
+      {
+        path: 'employees-motcle', loadChildren: () => import ("./gestion-employe-motcle/gestion-employe-motcle.module").then((m) => m.GestionEmployeMotcleModule)
+      },
+
     ]
   }
 ];

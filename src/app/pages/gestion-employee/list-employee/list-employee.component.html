@@ -17,8 +17,8 @@
             <td>{{emp.employeePhone}}</td>    
             <td>{{emp.department.departmentName}}</td>         
           
-            <td> <button class="btn btn-outline-info btn-sm fa fa-edit">Modifier</button></td>
-            <td><button class="btn btn-outline-danger btn-sm fa fa-remove">Supprimer</button></td>
+            <td> <button class="btn btn-outline-info btn-sm fa fa-edit"  (click)="onUpdate(emp)">Modifier</button></td>
+            <td><button class="btn btn-outline-danger btn-sm fa fa-remove" (click)="deleteEmployee(emp.id)">Supprimer</button></td>
         
         </tr>  
     </tbody>

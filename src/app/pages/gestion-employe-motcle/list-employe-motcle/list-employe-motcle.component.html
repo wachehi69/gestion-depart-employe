@@ -1,0 +1,57 @@
+<h5>List des employés par mot clé</h5>
+<div class="my-2">
+    <div class="row">
+        <div class="col-md-4">
+           <span class="filtre">Recherche nom </span>
+           {{motclefilter}}
+        </div>
+        <div class="col-md-8 form-group">
+        <input type="text" class="form-control" [(ngModel)]="motclefilter" >
+      </div>
+    </div>
+</div>
+<table class="table  table-striped">
+
+    <thead>
+        <tr >
+            <th class="scope">#</th>
+            <th class="scope">Nom</th>
+            <th class="scope">Prénom</th>
+            <th class="scope">Numéro</th>
+            <th class="scope">Départment</th>
+            <th class="scope">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+       <tr  *ngFor="let e of employeesfilter">
+         <td>{{e.id}}</td>
+         <td>{{e.employeeLastName}}</td>
+         <td>{{e.employeeFirstName}}</td>
+         <td>{{e.employeePhone}}</td>
+         <td>{{e.department.departmentName}}</td>
+          
+         <td><button type="button" class="btn btn-outline-info fa fa-edit"  >Modifier</button></td>
+         <td><button type="button" class="btn btn-outline-danger fa fa-remove" (click)="onDelete(e.id)" >Supprimer</button></td>
+
+       </tr>
+    </tbody>
+</table>
+<pagination-controls
+previousLabel="Precedent"
+nextLabel="Suivant"
+[responsive]="true"
+(pageChange)="handlePageChange($event)"
+>
+</pagination-controls>
+<ul>
+    <li 
+     class="list-group-item"
+    *ngFor="let e of employeesfilter | paginate : {
+       itemsPerPage:PAGESIZE,
+       currentPage:PAGE,
+       totalItems:count
+    }; let i = index "     
+    [class.active]= "i === CURRENTINDEX"
+    >
+   </li>
+ </ul>

@@ -1,0 +1,55 @@
+<form  [formGroup]="formEmployeMot"   (ngSubmit)="ajoutEmploye()">
+  <div class="form-group">
+    <label for="nom">Nom de l'employe</label>
+    <input type="text"  
+     [ngClass]="{'is-invalid': submitted  && f['employeeLastName'].errors }"
+     formControlName="employeeLastName" class="form-control">  
+   <div *ngIf="f['employeeLastName'].errors" class="invalid-feedback">
+      <div *ngIf="f['employeeLastName'].errors?.['required']" >
+        <i>Le nom de l'employee est obligatoire</i>
+      </div>
+   </div>  
+</div>
+  <div class="form-group">
+        <label for="prenom">Prenom de l'employe</label>
+        <input type="text" 
+        [ngClass]="{'is-invalid': submitted && f['employeeFirstName'].errors }" 
+        formControlName="employeeFirstName" class="form-control" >  
+      <div *ngIf="f['employeeFirstName'].errors" class="invalid-feedback">
+          <div *ngIf="f['employeeFirstName'].errors?.['required']">
+              <i>le prenom est obligatoire</i>
+         </div>
+      </div>
+   </div>
+  <div class="form-group">
+    <label for="Phone">Phone de l'employe</label>
+    <input type="text" 
+    [ngClass]="{'is-invalid': submitted && f['employeePhone'].errors}"
+    formControlName="employeePhone" class="form-control" >
+  
+    <div *ngIf="f['employeePhone'].errors" class="invalid-feedback">
+       <div *ngIf="f['employeePhone'].errors?.['required']">
+        <i>le numero de tépéhone est obligatoire</i>
+      </div>
+  </div>
+  </div>
+  <div class="form-group">
+    <label for="department">Departement</label>
+    <select [ngClass]="{'is-invalid': submitted && f['departmentId'].errors}"            
+          formControlName="departmentId"  
+          class="form-control" 
+          name="department" 
+          id="department">
+                     
+        <option *ngFor="let dep of listDept"  value="{{dep.id}}" >{{dep.departmentName}}</option>
+    </select>
+     <div *ngIf="f['departmentId'].errors"  class="invalid-feedback">
+          <div *ngIf="f['departmentId'].errors?.['required']">
+              <i>Le departement est obligatoire</i>
+          </div>
+     </div>
+  </div>
+  <button type="submit" class="btn btn-outline-primary mt-2">Envoyer</button>
+
+
+</form>

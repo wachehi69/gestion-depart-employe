@@ -7,13 +7,17 @@ import { ListEmployeeComponent } from './list-employee/list-employee.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
+
 
 
 @NgModule({
   declarations: [
     GestionEmployeeComponent,
     ListEmployeeComponent,
-    AddEmployeeComponent
+    AddEmployeeComponent,
+    EditEmployeeComponent,
+    
   ],
   imports: [
     CommonModule,
