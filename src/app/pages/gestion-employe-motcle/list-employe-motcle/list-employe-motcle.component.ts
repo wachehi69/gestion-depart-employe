@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { IEmploye } from '../../Employee/employee';
 
@@ -8,6 +8,8 @@ import { IEmploye } from '../../Employee/employee';
   styleUrls: ['./list-employe-motcle.component.css']
 })
 export class ListEmployeMotcleComponent implements OnInit{
+
+  @Output() employeeEmitted: EventEmitter<any>  = new EventEmitter();
 
   public employeesfilter: any[] = [];
   public employees : any[] = [];
@@ -89,9 +91,10 @@ export class ListEmployeMotcleComponent implements OnInit{
     this.employeService.delEmployee(id).subscribe(response =>{
       this.getlistemployePagingByMotCle();
     }, err => console.log(err)) ; 
+  }
 
-
-
+  onUpdate = (employee: any) => {
+    this.employeeEmitted.emit(employee);
   }
   
 

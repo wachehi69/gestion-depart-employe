@@ -45,6 +45,7 @@ export class AddEmployeMotcleComponent implements OnInit{
       this.employeserv.creatEmployee(this.formEmployeMot.value).subscribe(
         response => {
        this.formEmployeMot.reset();
+       this.submitted = false;
         }, err => console.log(err))
     }
   } 

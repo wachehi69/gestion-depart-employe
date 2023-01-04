@@ -1,3 +1,4 @@
+<h5>Création d'un nouveau employe</h5>
 <form  [formGroup]="formEmployeMot"   (ngSubmit)="ajoutEmploye()">
   <div class="form-group">
     <label for="nom">Nom de l'employe</label>
@@ -39,8 +40,7 @@
           formControlName="departmentId"  
           class="form-control" 
           name="department" 
-          id="department">
-                     
+          id="department">                     
         <option *ngFor="let dep of listDept"  value="{{dep.id}}" >{{dep.departmentName}}</option>
     </select>
      <div *ngIf="f['departmentId'].errors"  class="invalid-feedback">
@@ -49,7 +49,7 @@
           </div>
      </div>
   </div>
-  <button type="submit" class="btn btn-outline-primary mt-2">Envoyer</button>
+  <button type="submit" [disabled]="!formEmployeMot.valid"   class="btn btn-outline-primary mt-2">Envoyer</button>
 
 
 </form>

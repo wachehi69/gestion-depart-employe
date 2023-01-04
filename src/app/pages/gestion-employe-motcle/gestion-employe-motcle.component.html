@@ -1,11 +1,12 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-8">
-            <app-list-employe-motcle></app-list-employe-motcle>
+            <app-list-employe-motcle (employeeEmitted)="get($event)"></app-list-employe-motcle>
         </div>
         <div class="col-md-4">
-          <app-add-employe-motcle></app-add-employe-motcle>
-        </div>
+          <app-add-employe-motcle *ngIf="!isUpdating"></app-add-employe-motcle>
+          <app-edit-employe-motcle [employee]="employeeShared" *ngIf="isUpdating"></app-edit-employe-motcle>
+       </div>
         
     </div>
 </div>

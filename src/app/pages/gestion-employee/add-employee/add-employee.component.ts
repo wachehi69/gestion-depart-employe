@@ -44,10 +44,9 @@ export class AddEmployeeComponent implements OnInit{
     }else {
      console.log(this.employeeForm.value); 
       this.employeServ.creatEmployee(this.employeeForm.value).subscribe(data => {
-        console.log(data)    
-
-        this.employeeForm.reset();        
         this.submitted = false;
+        this.employeeForm.reset();        
+        
       }, err => console.log(err))
 
     }

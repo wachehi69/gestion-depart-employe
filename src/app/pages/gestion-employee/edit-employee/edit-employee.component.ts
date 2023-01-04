@@ -30,6 +30,7 @@ constructor(
     employeePhone: ['', Validators.required],
     departmentId: ['', Validators.required]
   })
+  alert(this.employee);
     this.setEmploye(this.employee)  //
   }
   getListDepartment() : void {

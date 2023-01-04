@@ -1,1 +1,49 @@
-<p>edit-employe-motcle works!</p>
+<h5>Modification de l'employé</h5>
+<form [formGroup]="formEmployee" (ngSubmit)="ajoutEmployee()" >
+   <div class="form-group">
+      <label for="nom"> Nom de l'employe</label> 
+      <input 
+      [ngClass]="{'is-invalid': submitted && f['employeeLastName'].errors}"
+      type="text" formControlName="employeeLastName" class="form-control">  
+      <div *ngIf="f['employeeLastName'].errors" class="invalid-feedback">
+        <div *ngIf="f['employeeLastName'].errors?.['required']">
+            <i>Le nom est obligatoire</i>
+        </div>
+      </div>  
+   </div>
+   <div class="form-group">
+    <label for="prenom"> Prénom de l'employe</label> 
+    <input 
+     [ngClass]="{'is-invalid' : submitted && f['employeeFirstName'].errors }"
+     type="text" formControlName="employeeFirstName" class="form-control">
+     <div  *ngIf="f['employeeFirstName'].errors" class="invalid-feedback">
+          <div *ngIf="f['employeeFirstName'].errors?.['required']">
+            <i>le prénom est obligatoire</i>
+          </div>
+     </div>
+ </div>
+ <div class="form-group">
+    <label for="phone"> Phone de l'employe</label> 
+    <input 
+    [ngClass]="{'is-invalid': submitted && f['employeePhone'].errors}"
+    type="text" formControlName="employeePhone" class="form-control">
+    <div *ngIf="f['employeePhone'].errors" class="invalid-feedback">
+        <div *ngIf="f['employeePhone'].errors?.['required']">
+            <i>Le phone est obligatoire</i>
+        </div>
+    </div>
+ </div>
+ <div class="form-group">
+    <label for="department">Departement de l'employe</label>
+    <select [ngClass]="{'is-invalid': submitted && f['departmentId'].errors}"
+        formControlName="departmentId" class="form-control">
+     <option *ngFor="let dep of listDepart" value="{{dep.id}}">{{dep.departmentName}}</option>
+    </select>
+    <div *ngIf="f['departmentId'].errors" class="invalid-feedback">
+        <div *ngIf="f['departmentId'].errors?.['required']">
+            <i>Le departement de l'employé est obligatoire</i>
+        </div>
+     </div>
+ </div>
+ <button type="submit" [disabled]="!formEmployee.valid"  class="btn btn-outline-success mt-2" > Envoyer</button>
+</form>

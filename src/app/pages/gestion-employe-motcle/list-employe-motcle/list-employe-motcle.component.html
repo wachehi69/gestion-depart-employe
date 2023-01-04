@@ -28,9 +28,8 @@
          <td>{{e.employeeLastName}}</td>
          <td>{{e.employeeFirstName}}</td>
          <td>{{e.employeePhone}}</td>
-         <td>{{e.department.departmentName}}</td>
-          
-         <td><button type="button" class="btn btn-outline-info fa fa-edit"  >Modifier</button></td>
+         <td>{{e.department.departmentName}}</td>          
+         <td><button type="button" class="btn btn-outline-info fa fa-edit" (click)="onUpdate(e)" >Modifier</button></td>
          <td><button type="button" class="btn btn-outline-danger fa fa-remove" (click)="onDelete(e.id)" >Supprimer</button></td>
 
        </tr>
